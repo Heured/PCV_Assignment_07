@@ -2,8 +2,8 @@
 Three-dimensional reconstruction
 ## 外极几何
   已知两个摄像头的光心O和O′，P为空间中的一点，p和p′是点P在两个摄像头成的像中的投影。  
-  平面OO′P称为外极平面，显然p和p′是OP和OP′上的，即该5点共面。外极平面OO′P与两个相机的视平面相交于线l和l′，这两条直线称为外极线。其中l是与p′相关的外极线，l′是与pp相关的外极线。且p在l上，p′在l′上。O和O′与相关视平面相交于点e和e′，这两个点分别为O和O′在对方视平面的投影。如下图所示：  
-  ![emmmm]()
+  平面OO′P称为外极平面，显然p和p′是OP和OP′上的，即该5点共面。外极平面OO′P与两个相机的视平面相交于线l和l′，这两条直线称为外极线。其中l是与p′相关的外极线，l′是与p相关的外极线。且p在l上，p′在l′上。O和O′与相关视平面相交于点e和e′，这两个点分别为O和O′在对方视平面的投影。如下图所示：  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/外极几何.png)
   
   按照上面的定义，假设p和p′分别是空间中同一点在两个不同视平面上的像点，则p′一定在l′上，p一定在l上，这就是外极线约束。  
   如果已经知道相机的参数，那么在重建过程中遇到的问题就是两幅图像之间的关系，外极线约束的主要作用就是限制对应特征点的搜索范围，将对应特征点的搜索限制在极线上。
@@ -11,10 +11,22 @@ Three-dimensional reconstruction
 ## 基础矩阵
   上面提到的是两幅图像之间的约束关系，这种约束关系使用代数的方式表示出来即为基本矩阵。假设M和M′分别为两个摄像机的参数矩阵，其他同上图所示。则极线l′的参数方程为：  
   
-![emmmm]()
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its21.PNG)
+  
+其中，M+是M的广义逆矩阵，于是有：  
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its22.PNG)
   
   
-![emmmm]()
+这里，F就表示两幅图像关系的基础矩阵，也是两幅图像极几何关系的代数描述。  
+由上可知，l′=Fp，且p′一定在l′上，则:  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its23.PNG)
+  
+且基础矩阵F是一个3×3的秩为2的矩阵。一般记基础矩阵F为：  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its24.PNG)
+  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its25.PNG)
+  
+  
 ## 确定基础矩阵F
 
 
