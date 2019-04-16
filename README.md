@@ -48,6 +48,9 @@ RANSAN算法可以用来消除错误匹配的的点，找到基础矩阵F，算�
 ## 实施
   基本步骤：计算图像对的特征匹配，并估计基础矩阵。使用外极线作为第二个输入，通过在外极线上对每个特征点寻找最佳的匹配来找到更多的匹配。
   
+  原图：  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/原图.PNG)
+  
 代码：  
 ```python
 # coding: utf-8
@@ -205,6 +208,8 @@ print(P3)
 
 ```
 ### 室外
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its01.png)  
+
 基础矩阵F:  
 ```
 [[ 2.73120053e-08  7.74483398e-07 -8.61310304e-04]
@@ -212,7 +217,7 @@ print(P3)
  [ 4.95072878e-04 -5.54368224e-03  1.00000000e+00]]
 ```
   
-  
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its02.png)  
   
 ```
 P2:
@@ -225,6 +230,7 @@ F:
  [ 4.95072878e-04 -5.54368224e-03  1.00000000e+00]]
 ```
   
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its03.png)  
 
 ```
 P3:
@@ -251,6 +257,7 @@ P3:
  
 
 ### 室内
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its11.png)  
 基础矩阵F:  
 ```
 [[-4.51196382e-07  1.67478886e-05 -1.05720209e-02]
@@ -258,6 +265,8 @@ P3:
  [ 1.07119393e-02 -8.92502716e-03  1.00000000e+00]]
 ```
   
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its12.png)  
+
   
 ```
 P2:
@@ -271,6 +280,7 @@ F:
 
 ```
   
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its13.png)  
 
 ```
 P3:
@@ -293,4 +303,23 @@ P3:
  [ 1.85933469e-03 -2.89388097e-02 -1.52622900e-04  1.09282148e-03]
  [-1.36126006e-05 -1.12621684e-04 -3.74576495e-07  2.07619233e-06]]
 
+ ```
+ 
+ 遇到问题：  
+ ```
+ (1)
+ Traceback (most recent call last):
+  File "D:/pyCharm/pycharm_workspace/2019_4_16Assignment_07/CV_Book_Ch_5_Ex_3.py", line 60, in <module>
+    F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-5)
+  File "D:/pyCharm/pycharm_workspace/2019_4_16Assignment_07/CV_Book_Ch_5_Ex_3.py", line 55, in F_from_ransac
+    8, maxiter, match_threshold, d, return_all=True)
+  File "D:\Anaconda\Anaconda3_5.3.0\envs\no6py3\lib\site-packages\PCV\tools\ransac.py", line 114, in ransac
+    raise ValueError("did not meet fit acceptance criteria")
+ValueError: did not meet fit acceptance criteria
+ ```
+ 解决：调整阈值  
+ ```python
+ # F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-5)
+ # 调整 match_threshold为1e-3
+ F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-5)
  ```
