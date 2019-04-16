@@ -28,8 +28,22 @@ Three-dimensional reconstruction
   
   
 ## 确定基础矩阵F
-
-
+确定基础矩阵的最简单的方法即为8点法。由上可知，存在一对匹配点x1,x2，当有8对这样的点时如下图所示：  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its26.PNG)
+  
+则有如下方程：  
+  
+![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its27.PNG)
+  
+另左边矩阵为A，右边矩阵为f，即:  
+  ![emmmm](https://github.com/Heured/PCV_Assignment_07/blob/master/imgToShow/its28.PNG)
+  
+  
+RANSAN算法可以用来消除错误匹配的的点，找到基础矩阵F，算法思想如下：  
+ （1）随机选择8个点；  
+ （2）用这8个点估计基础矩阵F；  
+ （3）用这个F进行验算，计算用F验算成功的点对数n；  
+  重复多次，找到使n最大的F作为基础矩阵。
 
 ## 实施
   基本步骤：计算图像对的特征匹配，并估计基础矩阵。使用外极线作为第二个输入，通过在外极线上对每个特征点寻找最佳的匹配来找到更多的匹配。
