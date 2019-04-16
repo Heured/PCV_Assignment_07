@@ -321,5 +321,5 @@ ValueError: did not meet fit acceptance criteria
  ```python
  # F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-5)
  # 调整 match_threshold为1e-3
- F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-5)
+ F, inliers = F_from_ransac(x1n, x2n, model, maxiter=5000, match_threshold=1e-3)
  ```
